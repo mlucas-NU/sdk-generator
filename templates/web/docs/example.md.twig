@@ -12,7 +12,7 @@ sdk
 {% endif %}
 {% if method.type == 'webAuth' %}// Go to OAuth provider login page
 {% endif %}
-{% if method.type == 'webAuth' %}{% elseif method.type == 'location' %}let result = {% else %}let promise = {% endif %}sdk.{{ service.name | caseLower }}.{{ method.name | caseCamel }}({% for parameter in method.parameters.all %}{% if parameter.required %}{% if not loop.first %}, {% endif %}{{ parameter | paramExample }}{% endif %}{% endfor %});
+{% if method.type == 'webAuth' %}{% elseif method.type == 'location' %}let result = {% else %}let promise = {% endif %}sdk.{{ service.name | caseLower }}.{{ method.name | caseCamel }}({% for parameter in method.parameters.all %}{% if not loop.first %}, {% endif %}{% if parameter.class == 'query' %} [Query.equal("name", "User"), Query.greater("age", 20)]{% else %}{{ parameter | paramExample }}{% endif %}{% endfor %});
 
 {% if method.type == 'webAuth' %}{% elseif method.type == 'location' %}console.log(result); // Resource URL{% else %}promise.then(function (response) {
     console.log(response); // Success
