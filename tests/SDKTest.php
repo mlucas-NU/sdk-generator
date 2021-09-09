@@ -54,6 +54,7 @@ class SDKTest extends TestCase
             ],
             'envs' => [
                 'dart-2.12' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/dart dart:2.12 sh -c "dart pub get && dart pub run tests/tests.dart"',
+                'dart-2.13' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/dart dart:2.12 sh -c "dart pub get && dart pub run tests/tests.dart"',
                 'dart-stable' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/dart dart:stable sh -c "dart pub get && dart pub run tests/tests.dart"',
                 'dart-beta' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/dart dart:beta sh -c "dart pub get && dart pub run tests/tests.dart"',
             ],
@@ -67,6 +68,7 @@ class SDKTest extends TestCase
                 'cp tests/languages/flutter/tests.dart tests/sdks/flutter/test/appwrite_test.dart',
             ],
             'envs' => [
+                'flutter-2.0.0' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/flutter --env PUB_CACHE=vendor cirrusci/flutter:2.0.0 sh -c "flutter pub get && flutter test test/appwrite_test.dart"',
                 'flutter-stable' => 'docker run --rm -v $(pwd):/app -w /app/tests/sdks/flutter --env PUB_CACHE=vendor cirrusci/flutter:stable sh -c "flutter pub get && flutter test test/appwrite_test.dart"',
             ],
             'supportException' => true,
