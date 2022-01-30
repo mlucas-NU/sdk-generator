@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Function
-class Function {
+class Function implements Model {
     /// Function ID.
     final String $id;
     /// Function permissions.
@@ -67,6 +67,7 @@ class Function {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "\$id": $id,

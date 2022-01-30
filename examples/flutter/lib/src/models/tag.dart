@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Tag
-class Tag {
+class Tag implements Model {
     /// Tag ID.
     final String $id;
     /// Function ID.
@@ -31,6 +31,7 @@ class Tag {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "\$id": $id,

@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
   name = 'appwrite',
   packages = ['appwrite', 'appwrite/services'],
-  version = '0.5.1',
+  version = '',
   license='BSD-3-Clause',
   description = 'Repo short description goes here',
   author = 'Appwrite Team',
@@ -11,7 +11,7 @@ setuptools.setup(
   maintainer = 'Appwrite Team',
   maintainer_email = 'team@appwrite.io',
   url = 'https://appwrite.io/support',
-  download_url='https://github.com/repoowner/reponame/archive/0.5.1.tar.gz',
+  download_url='https://github.com/repoowner/reponame/archive/.tar.gz',
   # keywords = ['SOME', 'MEANINGFULL', 'KEYWORDS'],
   install_requires=[
           'requests',

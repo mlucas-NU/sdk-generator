@@ -1,8 +1,7 @@
-#include <algorithm>
-#include <string>
+
 #include "client.hpp"
-#include "temp_libs/json.hpp"
-#include <cpr/cpr.h>
+
+
 
 using json = nlohmann::json;
 using string = std::string;
@@ -81,7 +80,7 @@ Client& Client::addHeader(string key, string value) {
  * @return array|string  // TODO: Returning JSON (instead of array), but not string.
  * @throws {{spec.title | caseUcfirst}}Exception
  */
-json Client::call(string method, string path, json headers, json params) {
+json Client::call(string method, string path, cpr::Header headers, json params) {
   //  return json({{ "{{" }}"fake response", "will fix soon (TM)" {{ "}}" }});
 
   

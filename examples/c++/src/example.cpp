@@ -2,10 +2,10 @@
 #include <map>
 #include <string>
 
-#include "client.hpp"
-#include "exception.hpp"
-#include "services/users.hpp"
-#include "services/account.hpp"
+#include "appwrite/include/client.hpp"
+#include "appwrite/include/exception.hpp"
+#include "appwrite/services/users.hpp"
+#include "appwrite/services/account.hpp"
 
 using string = std::string;
 
@@ -18,14 +18,14 @@ int main()
     std::cout << "Instantiated a Client." << std::endl;
 
     // Try a typical client configuration
-    client.setEndpoint("http://localhost/v1")                                                                                                                                                                                                                                  // Your API Endpoint
-        .setProject("617ff618903c3")                                                                                                                                                                                                                                                // Your project ID
-        .setKey("test this ") // Your secret API key
-        .setSelfSigned(true);                                                                                                                                                                                                                                                       // Use only on dev mode with a self-signed SSL cert
+    client.setEndpoint("http://localhost/v1") // Your API Endpoint
+        .setProject("617ff618903c3")          // Your project ID
+        .setKey("test this ")                 // Your secret API key
+        .setSelfSigned(true);                 // Use only on dev mode with a self-signed SSL cert
 
     Appwrite::Account account(client);
     // Headers are protected, but if we make them public (in client.hpp), we can print them by uncommenting the following:
-    /* 
+    /*
     std::cout << "Headers:" << std::endl;
     for (std::map<string, string>::iterator it = client.headers.begin(); it != client.headers.end(); it++) {
         std::cout << "  " << it->first << " => " << it->second << std::endl;

@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Tags List
-class TagList {
+class TagList implements Model {
     /// Total number of items available on the server.
     final int sum;
     /// List of tags.
@@ -19,6 +19,7 @@ class TagList {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "sum": sum,

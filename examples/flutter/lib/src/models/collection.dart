@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Collection
-class Collection {
+class Collection implements Model {
     /// Collection ID.
     final String $id;
     /// Collection permissions.
@@ -35,6 +35,7 @@ class Collection {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "\$id": $id,

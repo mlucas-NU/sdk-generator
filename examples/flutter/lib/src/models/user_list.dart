@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Users List
-class UserList {
+class UserList implements Model {
     /// Total number of items available on the server.
     final int sum;
     /// List of users.
@@ -19,6 +19,7 @@ class UserList {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "sum": sum,

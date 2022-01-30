@@ -105,18 +105,26 @@ module Appwrite
                 
                 return fetch(method, uri, headers, {}, limit - 1)
             end
-            
-            begin
-                res = JSON.parse(response.body);
-            rescue JSON::ParserError => e
-                raise Appwrite::Exception.new(response.body, response.code, nil)
+
+            if response.content_type == 'application/json'
+                begin
+                    json = JSON.parse(response.body)
+
+                    if response.class == Net::HTTPClientError || response.class == Net::HTTPServerError
+                        raise Appwrite::Exception.new(json['message'], json['status'], response)
+                    end
+                rescue JSON::ParserError => e
+                    raise Appwrite::Exception.new(e.message, response.code, response)
+                end
+
+                return json
             end
 
-            if(response.code.to_i >= 400)
-                raise Appwrite::Exception.new(res['message'], res['status'], res)
+            if response.class == Net::HTTPClientError || response.class == Net::HTTPServerError
+                raise Appwrite::Exception.new(response.body, response.code, response)
             end
 
-            return res;
+            return response.body if response.body_permitted?
         end
         
         def encodeFormData(value, key=nil)

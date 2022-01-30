@@ -1,7 +1,7 @@
 part of appwrite.models;
 
 /// Rule
-class Rule {
+class Rule implements Model {
     /// Rule ID.
     final String $id;
     /// Rule Collection.
@@ -47,6 +47,7 @@ class Rule {
         );
     }
 
+    @override
     Map<String, dynamic> toMap() {
         return {
             "\$id": $id,
